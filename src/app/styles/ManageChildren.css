@@ -1,0 +1,329 @@
+/* Users.css */
+
+/* Center all table headers */
+th {
+  text-align: center; /* Center the text in each header cell */
+}
+
+/* Center the buttons inside the table cells in the Actions column */
+td {
+  text-align: center; /* Center the content (buttons) inside table cells */
+}
+
+/* Optional: Style the table itself */
+table {
+  width: 100%; /* Make the table full width */
+  border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+/* Optional: Style the table headers */
+th {
+  background-color: #f2f2f2; /* Light gray background for headers */
+  padding: 8px; /* Add some padding to headers */
+  border: 1px solid #ddd; /* Border for the table headers */
+}
+
+/* Optional: Style the table cells */
+td {
+  padding: 8px; /* Add padding inside table cells */
+  border: 2px solid #ddd; /* Border for table cells */
+}
+/* Center the buttons inside a container */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Icon size */
+  margin: 0 8px; /* Add spacing between buttons */
+}
+
+button i {
+  color: #000; /* Default icon color */
+}
+
+.inject-button i {
+  color: rgb(12, 52, 182);
+}
+/* Green color for the edit button */
+.edit-button i {
+  color: green;
+}
+
+/* Red color for the delete button */
+.delete-button i {
+  color: red;
+}
+
+/* Align buttons to the center */
+td {
+  text-align: center; /* Centers the buttons within the table cell */
+}
+
+
+
+/* Modal overlay styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+/* Modal content styling */
+.modal-content1 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 1000px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.modal-content2 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-in-out;
+}
+.modal-content2 h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.modal-content2 label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-content2 input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Modal header */
+.modal-content1 h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.modal-content1 label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-content1 input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Modal actions */
+.modal-actions1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions1 button {
+  padding: 10px 190px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions1 button:hover {
+  background-color: #0056b3;
+}
+
+.modal-actions1 button:nth-child(2) {
+  background-color: #6c757d;
+}
+
+.modal-actions1 button:nth-child(2):hover {
+  background-color: #5a6268;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+.modal-content1 .close {
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.modal-content2 .close {
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.save-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.edit-button, .delete-button {
+  cursor: pointer;
+}
+
+.form-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.scrollable-container {
+  height: 85vh; /* Adjust as per your requirement */
+  overflow-y: auto;
+ 
+  padding: 10px;
+}
+
+
+
+h4 {
+  margin-top: 20px;
+}
+
+.form-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+}
+
+
+
+
+
+
+* Modal actions */
+.modal-actions2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions2 button {
+  padding: 10px 80px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions2 button:hover {
+  background-color: #0056b3;
+}
+
+.modal-actions2 button:nth-child(2) {
+  background-color: #6c757d;
+}
+
+.modal-actions2 button:nth-child(2):hover {
+  background-color: #5a6268;
+}

@@ -1,0 +1,56 @@
+.form-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.scrollable-container {
+  height: 85vh; /* Adjust as per your requirement */
+  overflow-y: auto;
+ 
+  padding: 10px;
+}
+
+
+
+h4 {
+  margin-top: 20px;
+}
+
+.form-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.form-column {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.button {
+  
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(65, 160, 86);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0e500e;
+}

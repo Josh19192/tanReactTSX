@@ -1,95 +1,68 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import '@fortawesome/fontawesome-free/css/all.min.css'; // FontAwesome import
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import AdminLayout from './components/AdminLayout';
+import Home from './pages/Home';
+import AddChildren from './pages/AddChild';
+import ManageChildren from './pages/ManageChildren';
+import AddVac from './pages/AddVac';
+import ManageVac from './pages/ManageVac';
+import Account from './pages/Account';
+import ShotRecords from './pages/ShotRecords';
+import LoginForm from './pages/LoginForm'; // Import the LoginForm component
+
+import './styles/Sidebar.css';
+
+const App: React.FC = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track login state
+
+  useEffect(() => {
+    setIsClient(true); // Ensure client-side rendering
+  }, []);
+
+  const handleLogin = (isLoggedIn: boolean) => {
+    setIsAuthenticated(isLoggedIn); // Update auth state when login is successful
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false); // Log out and set auth state to false
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
+  };
+
+  // Prevent rendering of the app until it's client-side
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <Router>
+      <Routes>
+        {/* If not authenticated, show login page */}
+        {!isAuthenticated ? (
+          <>
+            <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/login" replace />} /> {/* Redirect all non-login routes to login */}
+          </>
+        ) : (
+          // If authenticated, render protected routes
+          <>
+            <Route path="/home" element={<AdminLayout><Home /></AdminLayout>} />
+            <Route path="/addchild" element={<AdminLayout><AddChildren /></AdminLayout>} />
+            <Route path="/managechildren" element={<AdminLayout><ManageChildren /></AdminLayout>} />
+            <Route path="/addvac" element={<AdminLayout><AddVac /></AdminLayout>} />
+            <Route path="/managevac" element={<AdminLayout><ManageVac /></AdminLayout>} />
+            <Route path="/shotrecords" element={<AdminLayout><ShotRecords /></AdminLayout>} />
+            <Route path="/account" element={<AdminLayout><Account /></AdminLayout>} />
+            <Route path="*" element={<Navigate to="/home" replace />} /> {/* Default redirect to home */}
+          </>
+        )}
+      </Routes>
+    </Router>
   );
-}
+};
+
+export default App;
